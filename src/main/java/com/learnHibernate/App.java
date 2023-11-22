@@ -5,13 +5,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
-public class App
-{
-    public static void main( String[] args )
-    {
+public class App {
+    public static void main(String[] args) {
 
 //        Configuration cfg = new Configuration();
         // cfg.addResource("item.cfg.xml");
@@ -34,12 +30,13 @@ public class App
         transaction.begin();
         /*entityManager.createQuery("this is jpql/hql entity based query");
         entityManager.createNativeQuery("this is native query");*/
-        Student s1 = new Student(1L, "student1", "student1@email.com");
+        Student s1 = new Student("student1", "student1@email.com");
         entityManager.persist(s1);
         transaction.commit();
 
         /*System.out.println(factory.isOpen());
 
         factory.close();*/
+        entityManagerFactory.close();
     }
 }
